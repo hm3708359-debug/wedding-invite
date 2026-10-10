@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maryam & Zaviyar Ali - Wedding Invitation</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --card-brown: #452d20;
+            --text-gold: #e2c38d;
+            --text-cream: #f7f4ee;
+            --text-dark: #332117;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            color: var(--text-dark);
+            font-family: 'Cormorant Garamond', serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            /* Local Background Image */
+            background: url('bg.webp') no-repeat center top fixed;
+            background-size: cover;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 440px;
+            width: 100%;
+            padding: 25px 15px 50px;
+            display: flex;
+            flex-direction: column;
+            gap: 45px;
+            position: relative;
+        }
+
+        /* HERO COVER SECTION */
+        .hero-section {
+            text-align: center;
+            position: relative;
+            padding-top: 20px;
+        }
+
+        .save-the-date {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 5px;
+            font-size: 0.95rem;
+            color: #523e31;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 290px;
+            margin: 0 auto 30px;
+        }
+
+        .main-envelope {
+            width: 100%;
+            display: block;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));
+        }
+
+        /* Floral Corner Positions */
+        .flower-overlay {
+            position: absolute;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        .flower-hero-top-left {
+            width: 130px;
+            top: -25px;
+            left: -35px;
+        }
+
+        .flower-hero-bottom-right {
+            width: 140px;
+            bottom: -25px;
+            right: -35px;
+        }
+
+        .couple-names-hero {
+            font-size: 3.2rem;
+            line-height: 1.1;
+            font-weight: 400;
+            color: var(--text-dark);
+        }
+
+        .couple-names-hero .ampersand {
+            display: block;
+            font-style: italic;
+            font-size: 2.2rem;
+            color: #705544;
+            margin: 4px 0;
+        }
+
+        .open-btn-container {
+            margin-top: 25px;
+        }
+
+        .btn-open {
+            font-family: 'Cinzel', serif;
+            letter-spacing: 4px;
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            background: none;
+            border: none;
+            border-bottom: 1.5px solid var(--text-dark);
+            padding-bottom: 4px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        /* CARD STYLES */
+        .card {
+            background-color: var(--card-brown);
+            color: var(--text-cream);
+            border-radius: 16px;
+            padding: 45px 25px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+            position: relative;
+            margin: 10px 0;
+        }
+
+        /* Card Floral Overlays */
+        .flower-card-top-left {
+            width: 130px;
+            top: -30px;
+            left: -35px;
+        }
+
+        .flower-card-top-right {
+            width: 130px;
+            top: -30px;
+            right: -35px;
+        }
+
+        .flower-card-bottom-right {
+            width: 140px;
+            bottom: -30px;
+            right: -35px;
+        }
+
+        .flower-card-bottom-left {
+            width: 140px;
+            bottom: -30px;
+            left: -35px;
+        }
+
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.25rem;
+            letter-spacing: 3px;
+            color: var(--text-gold);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* CEREMONY INFO */
+        .parents-grid {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .parents-grid::after {
+            content: '';
+            position: absolute;
+            height: 50%;
+            width: 1px;
+            background-color: rgba(226, 195, 141, 0.3);
+            left: 50%;
+        }
+
+        .parent-block p {
+            color: var(--text-gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .announcement {
+            font-family: 'Cinzel', serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: var(--text-gold);
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            line-height: 1.6;
+        }
+
+        .couple-names-main {
+            font-size: 3rem;
+            line-height: 1.1;
+        }
+
+        .couple-names-main span {
+            display: block;
+        }
+
+        .couple-names-main .ampersand {
+            font-style: italic;
+            font-size: 2rem;
+            color: var(--text-gold);
+            margin: 8px 0;
+        }
+
+        /* BARAAT INFO & CALENDAR */
+        .date-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin: 20px 0 30px;
+        }
+
+        .big-number {
+            font-size: 4rem;
+            line-height: 1;
+            font-weight: 400;
+        }
+
+        .date-details {
+            text-align: left;
+            border-left: 1px solid var(--text-gold);
+            padding-left: 15px;
+            font-size: 0.95rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+        }
+
+        .countdown-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            color: var(--text-gold);
+            margin-bottom: 8px;
+        }
+
+        .countdown-timer {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-cream);
+            margin-bottom: 25px;
+        }
+
+        .calendar-box {
+            background-color: #f3edd3;
+            color: var(--text-dark);
+            border-radius: 10px;
+            padding: 20px 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .calendar-month {
+            font-style: italic;
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            font-size: 0.9rem;
+        }
+
+        .day-header {
+            font-weight: 600;
+            color: #755b4a;
+            margin-bottom: 8px;
+        }
+
+        .highlight-day {
+            background-color: var(--card-brown);
+            color: var(--text-cream);
+            border-radius: 50%;
+            width: 26px;
+            height: 26px;
+            line-height: 26px;
+            margin: 0 auto;
+        }
+
+        .btn-calendar {
+            display: inline-block;
+            color: var(--text-cream);
+            text-decoration: underline;
+            font-size: 0.95rem;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+        /* LOCATION MAP */
+        .venue-container {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .venue-name {
+            font-family: 'Cinzel', serif;
+            font-size: 1.4rem;
+            letter-spacing: 2px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+
+        .venue-address {
+            font-size: 0.95rem;
+            color: #523e31;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .map-frame {
+            width: 100%;
+            height: 230px;
+            border: 0;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        /* TIMELINE SCHEDULE */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 25px;
+            position: relative;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 10px;
+        }
+
+        .timeline-time {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            width: 35%;
+            text-align: right;
+            color: var(--text-gold);
+        }
+
+        .timeline-dot {
+            width: 9px;
+            height: 9px;
+            background-color: var(--text-gold);
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .timeline-event {
+            width: 45%;
+            text-align: left;
+            font-size: 1.1rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 1rem;
+            color: #523e31;
+            font-style: italic;
+            margin-top: 10px;
+            font-weight: 500;
+        }
+
+        /* FLOATING MUSIC BUTTON */
+        .music-btn {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 48px;
+            height: 48px;
+            background-color: var(--card-brown);
+            color: var(--text-gold);
+            border: 1px solid var(--text-gold);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 99;
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 1. HERO SECTION -->
+        <div class="hero-section">
+            <div class="save-the-date">Save The Date</div>
+            
+            <div class="envelope-wrapper">
+                <img src="flower1.webp" class="flower-overlay flower-hero-top-left" alt="Flowers">
+                <img src="envelope.webp" alt="Envelope" class="main-envelope">
+                <img src="flower2.webp" class="flower-overlay flower-hero-bottom-right" alt="Flowers">
+            </div>
+
+            <div class="couple-names-hero">
+                Maryam
+                <span class="ampersand">&</span>
+                Zaviyar Ali
+            </div>
+
+            <div class="open-btn-container">
+                <button class="btn-open" onclick="document.getElementById('ceremony').scrollIntoView({behavior: 'smooth'})">Open</button>
+            </div>
+        </div>
+
+        <!-- 2. CEREMONY INFO CARD -->
+        <div class="card" id="ceremony">
+            <img src="flower1.webp" class="flower-overlay flower-card-top-left" alt="Flowers">
+            <img src="flower3.webp" class="flower-overlay flower-card-bottom-right" alt="Flowers">
+
+            <div class="section-title">Ceremony Info</div>
+            
+            <div class="parents-grid">
+                <div class="parent-block">
+                    <p>Mr.</p>
+                    <strong>Muhammad Maruf</strong>
+                </div>
+                <div class="parent-block">
+                    <p>Mr.</p>
+                    <strong>Muhammad Haneef</strong>
+                </div>
+            </div>
+
+            <div class="announcement">
+                We joyfully announce<br>the wedding of our children
+            </div>
+
+            <div class="couple-names-main">
+                <span>Maryam</span>
+                <span class="ampersand">&</span>
+                <span>Zaviyar Ali</span>
+            </div>
+        </div>
+
+        <!-- 3. BARAAT INFO CARD -->
+        <div class="card">
+            <img src="flower2.webp" class="flower-overlay flower-card-top-right" alt="Flowers">
+            <img src="flower1.webp" class="flower-overlay flower-card-bottom-left" alt="Flowers">
+
+            <div class="section-title">Baraat Info</div>
+            <p style="font-size: 0.95rem; letter-spacing: 1px; color: var(--text-gold);">THE RECEPTION WILL TAKE PLACE AT:</p>
+
+            <div class="date-display">
+                <div class="big-number">18</div>
+                <div class="date-details">
+                    <div>Friday</div>
+                    <div>December</div>
+                    <div>2026</div>
+                </div>
+            </div>
+
+            <div class="countdown-title">Countdown</div>
+            <div class="countdown-timer" id="timer">Calculating...</div>
+
+            <div class="calendar-box">
+                <div class="calendar-month">December 2026</div>
+                <div class="calendar-grid">
+                    <div class="day-header">Mo</div><div class="day-header">Tu</div><div class="day-header">We</div>
+                    <div class="day-header">Th</div><div class="day-header">Fr</div><div class="day-header">Sa</div><div class="day-header">Su</div>
+
+                    <span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
+                    <span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
+                    <span>14</span><span>15</span><span>16</span><span>17</span><span class="highlight-day">18</span><span>19</span><span>20</span>
+                    <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
+                    <span>28</span><span>29</span><span>30</span><span>31</span>
+                </div>
+            </div>
+
+            <a class="btn-calendar" onclick="alert('Added to Calendar!')">Add to Calendar</a>
+        </div>
+
+        <!-- 4. LOCATION MAP SECTION -->
+        <div class="venue-container">
+            <div class="venue-name">Raheela Banquet</div>
+            <div class="venue-address">A2/3 , KAUSAR TOWN , MALIR</div>
+            
+            <iframe 
+                class="map-frame" 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3618.318852331828!2d67.195321!3d24.88718!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33a258a183d2d%3A0x8e8eb45d9e52718!2sKausar%20Town%20Malir%20Karachi!5e0!3m2!1sen!2spk!4v1700000000000!5m2!1sen!2spk" 
+                allowfullscreen="" 
+                loading="lazy">
+            </iframe>
+        </div>
+
+        <!-- 5. WEDDING DAY SCHEDULE -->
+        <div class="card">
+            <img src="flower3.webp" class="flower-overlay flower-card-bottom-right" alt="Flowers">
+            
+            <div class="section-title">Wedding Day Schedule</div>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-time">8:00 PM</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event">Welcome</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">9:00 PM</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event">Nikkah</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">10:00 PM</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event">Dinner</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">11:00 PM</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-event">Rukhsati</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-note">
+            Your presence would be the greatest gift we could receive!
+        </div>
+
+    </div>
+
+    <!-- Floating Audio Toggle -->
+    <button class="music-btn" onclick="toggleAudio()" title="Toggle Background Music">
+        ♪
+    </button>
+
+    <audio id="bgMusic" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const targetDate = new Date("December 18, 2026 20:00:00").getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const difference = targetDate - now;
+
+            const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+            document.getElementById("timer").innerHTML = `${days} days ${hours} hours ${minutes} min ${seconds} sec`;
+        }, 1000);
+
+        function toggleAudio() {
+            const audio = document.getElementById("bgMusic");
+            if (audio.paused) {
+                audio.play();
+            } else {
+                audio.pause();
+            }
+        }
+    </script>
+</body>
+</html>
